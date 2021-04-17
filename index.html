@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Static Template</title>
+    <script src="./myscripts.js"></script>
+    <style>
+      body,
+      html {
+        height: 100%;
+      }
+      .parallax {
+        background-image: url("https://miro.medium.com/max/3622/1*RoXcbaF9lIqwpMjiXg54Vw.png");
+        height: 100%;
+        background-attachment: fixed;
+        background-size: cover;
+        background-repeat: no-repeat;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="parallax"></div>
+    <div
+      style="
+        height: 500px;
+        color: #ffffff;
+        background-color: #d83636;
+        font-size: 48px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding: 20px;
+      "
+    >
+      <i id="face" class="fa fa-smile-o fa-4x" aria-hidden="true"></i>
+    </div>
+    <div class="parallax"></div>
+
+    <script>
+      var element = document.getElementById("face");
+      var lastScrollTop = 0;
+      if (element) {
+        console.log("works");
+      }
+      console.log(element, "element");
+
+      window.addEventListener(
+        "scroll",
+        function () {
+          // or window.addEventListener("scroll"....
+          var st = window.pageYOffset || document.documentElement.scrollTop; // Credits: "https://github.com/qeremy/so/blob/master/so.dom.js#L426"
+          if (st > lastScrollTop) {
+            console.log("dowm", st);
+            //element.classList.replace("fa-smile-o", "fa-frown-o");
+            //element.classList.add("fa-frown-o");
+            // downscroll code
+          } else {
+            console.log("up", st);
+            //element.classList.remove("fa-frown-o");
+            // element.classList.add("fa-smile-o");
+            // upscroll code
+          }
+          lastScrollTop = st <= 0 ? 0 : st; // For Mobile or negative scrolling
+        },
+        false
+      );
+    </script>
+    <!-- <h1>This is a static template, there is no bundler or bundling involved!</h1> -->
+  </body>
+</html>
